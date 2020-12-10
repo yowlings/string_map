@@ -3,7 +3,7 @@
   <param name="/use_sim_time" value="false"/>
  
   <!--  ************** map_server  ***************  -->
-  <arg name="map_file"       default="$(find string_map)/map/my-1.yaml" />
+  <arg name="map_file"       default="$(find string_map)/map/24000.yaml" />
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)">
     <param name="frame_id"                      value="/map" />
   </node>
@@ -11,8 +11,12 @@
   <node name="string_map" output="screen" pkg="string_map" type="string_map_node">
     <param name="pub_with_rate" value="true">
     </param>
-    <param name="rate" value="5">
+    <param name="rate" value="1">
     </param>    
   </node>
+
+  <!-- rosbridge_server -->
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+
 
 </launch>
